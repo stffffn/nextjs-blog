@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Post from '../components/Post';
 import { getSortedPostsData } from '../lib/posts';
+import { getPostsByTagSlug } from '../lib/tags';
 import { IPost } from '../types/Post';
 
 export default ({ allPosts }: { allPosts: IPost[] }) => {
@@ -24,6 +25,8 @@ export default ({ allPosts }: { allPosts: IPost[] }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = getSortedPostsData();
+
+  getPostsByTagSlug('a-a-a');
 
   return {
     props: { allPosts },

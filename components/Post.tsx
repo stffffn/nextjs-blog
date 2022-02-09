@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { replaceSpacesWithDashes } from '../lib/helpers';
 import { IPost } from '../types/Post';
 import Date from './Date';
 
@@ -13,7 +14,7 @@ export default ({ post: { slug, title, date, tags } }: { post: IPost }) => {
       <div>
         {tags.map((tag, index) => (
           <React.Fragment key={index}>
-            <Link href={`/tag/${tag}`}>
+            <Link href={`/tag/${replaceSpacesWithDashes(tag)}`}>
               <a>#{tag}</a>
             </Link>{' '}
           </React.Fragment>

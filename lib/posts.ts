@@ -46,9 +46,11 @@ export const getSortedPostsData = (): IPost[] => {
 export const getAllPostSlugs = (): { params: { slug: string } }[] => {
   const fileNames = fs.readdirSync(postsDir);
 
-  return fileNames.map((filename) => {
+  return fileNames.map((fileName) => {
+    const slug = fileName.replace('.md', '');
+
     return {
-      params: { slug: filename.replace('.md', '') },
+      params: { slug },
     };
   });
 };
