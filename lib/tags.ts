@@ -13,7 +13,7 @@ import {
 const postsDir = path.join('posts');
 
 export const getSortedTagList = (): ITag[] => {
-  let allTags: ITag[] = [];
+  const allTags: ITag[] = [];
 
   const fileNames = fs.readdirSync(postsDir);
 
