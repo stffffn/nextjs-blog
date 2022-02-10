@@ -1,7 +1,7 @@
 ---
 title: 'Yet Another Test Post'
 date: '2222-02-22'
-tags: ['f', 'g', 'h', 'i', 'j', 'three single words', '1234']
+tags: ['g', 'h', 'i', 'j', 'three single words', '1234', 'f']
 ---
 
 Test Post Content.

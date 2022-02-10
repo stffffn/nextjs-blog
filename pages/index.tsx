@@ -26,8 +26,6 @@ export default ({ allPosts }: { allPosts: IPost[] }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = getSortedPostsData();
 
-  getPostsByTagSlug('a-a-a');
-
   return {
     props: { allPosts },
   };

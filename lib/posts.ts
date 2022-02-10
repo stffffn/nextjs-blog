@@ -5,6 +5,7 @@ import { marked } from 'marked';
 import { IPost } from '../types/Post';
 import { IFrontmatter } from '../types/Frontmatter';
 import { IPostData } from '../types/PostData';
+import { sortArrayAscending, sortArrayDescending } from './helpers';
 
 const postsDir = path.join('posts');
 
@@ -13,34 +14,15 @@ export const getSortedPostsData = (): IPost[] => {
 
   const posts = fileNames.map((fileName) => {
     const slug = fileName.replace('.md', '');
+    const frontmatter = extractFrontmatterFromFile(fileName)
+      .data as IFrontmatter;
 
-    const filePath = path.join(postsDir, fileName);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-
-    const frontmatter = matter(fileContent).data as IFrontmatter;
-
-    frontmatter.tags.sort((a, b) => {
-      if (a > b) {
-        return 1;
-      } else if (a < b) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
+    sortArrayAscending(frontmatter.tags);
 
     return { slug, ...frontmatter };
   });
 
-  return posts.sort(({ date: a }, { date: b }) => {
-    if (a < b) {
-      return 1;
-    } else if (a > b) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
+  return sortArrayDescending(posts, 'date');
 };
 
 export const getAllPostSlugs = (): { params: { slug: string } }[] => {
@@ -56,11 +38,7 @@ export const getAllPostSlugs = (): { params: { slug: string } }[] => {
 };
 
 export const getPostData = (slug: string): IPostData => {
-  const filePath = path.join(postsDir, `${slug}.md`);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-
-  const { data, content } = matter(fileContent);
-
+  const { data, content } = extractFrontmatterFromFile(`${slug}.md`);
   const contentHtml = marked(content);
 
   return {
@@ -68,4 +46,10 @@ export const getPostData = (slug: string): IPostData => {
     ...(data as IFrontmatter),
     contentHtml,
   };
+};
+
+const extractFrontmatterFromFile = (fileName: string) => {
+  const filePath = path.join(postsDir, fileName);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  return matter(fileContent);
 };

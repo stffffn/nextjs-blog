@@ -4,7 +4,11 @@ import path from 'path';
 import { IFrontmatter } from '../types/Frontmatter';
 import { IPost } from '../types/Post';
 import { ITag } from '../types/Tag';
-import { replaceDashesWithSpaces, replaceSpacesWithDashes } from './helpers';
+import {
+  replaceDashesWithSpaces,
+  replaceSpacesWithDashes,
+  sortArrayAscending,
+} from './helpers';
 
 const postsDir = path.join('posts');
 
@@ -14,10 +18,8 @@ export const getSortedTagList = (): ITag[] => {
   const fileNames = fs.readdirSync(postsDir);
 
   fileNames.map((fileName) => {
-    const filePath = path.join(postsDir, fileName);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-
-    const frontmatter = matter(fileContent).data as IFrontmatter;
+    const frontmatter = extractFrontmatterFromFile(fileName)
+      .data as IFrontmatter;
 
     frontmatter.tags.forEach((tagName) => {
       const tagIndex = allTags.findIndex((tag) => tag.name === tagName);
@@ -34,15 +36,7 @@ export const getSortedTagList = (): ITag[] => {
     });
   });
 
-  return allTags.sort(({ name: a }, { name: b }) => {
-    if (a > b) {
-      return 1;
-    } else if (a < b) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
+  return sortArrayAscending(allTags, 'name');
 };
 
 export const getAllTagSlugs = (): { params: { slug: string } }[] => {
@@ -50,9 +44,8 @@ export const getAllTagSlugs = (): { params: { slug: string } }[] => {
   const slugs: { params: { slug: string } }[] = [];
 
   fileNames.forEach((fileName) => {
-    const filePath = path.join(postsDir, fileName);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const frontmatter = matter(fileContent).data as IFrontmatter;
+    const frontmatter = extractFrontmatterFromFile(fileName)
+      .data as IFrontmatter;
 
     frontmatter.tags.forEach((tagName) => {
       const slug = replaceSpacesWithDashes(tagName);
@@ -67,15 +60,13 @@ export const getAllTagSlugs = (): { params: { slug: string } }[] => {
 
 export const getPostsByTagSlug = (slug: string): IPost[] => {
   const tagName = replaceDashesWithSpaces(slug);
-
   const fileNames = fs.readdirSync(postsDir);
   const posts: IPost[] = [];
 
   fileNames.forEach((fileName) => {
     const postSlug = fileName.replace('.md', '');
-    const filePath = path.join(postsDir, fileName);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const frontmatter = matter(fileContent).data as IFrontmatter;
+    const frontmatter = extractFrontmatterFromFile(fileName)
+      .data as IFrontmatter;
 
     if (frontmatter.tags.find((tag) => tag === tagName)) {
       posts.push({ slug: postSlug, ...frontmatter });
@@ -83,4 +74,10 @@ export const getPostsByTagSlug = (slug: string): IPost[] => {
   });
 
   return posts;
+};
+
+const extractFrontmatterFromFile = (fileName: string) => {
+  const filePath = path.join(postsDir, fileName);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  return matter(fileContent);
 };

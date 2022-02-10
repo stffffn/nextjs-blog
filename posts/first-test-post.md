@@ -1,7 +1,7 @@
 ---
 title: 'First Test Post'
 date: '2022-02-08'
-tags: ['a', 'b', 'c', 'd', 'e', 'two words', '1234']
+tags: ['d', 'e', 'c', 'two words', 'b', '1234', 'a']
 ---
 
 Test Post Content.

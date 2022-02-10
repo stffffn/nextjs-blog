@@ -2,6 +2,7 @@ import { GetStaticPaths } from 'next';
 import Post from '../../components/Post';
 import { getAllTagSlugs, getPostsByTagSlug } from '../../lib/tags';
 import { IPost } from '../../types/Post';
+import { ISlug } from '../../types/Slug';
 
 export default ({ posts }: { posts: IPost[] }) => {
   return (
@@ -22,14 +23,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({
-  params: { slug },
-}: {
-  params: { slug: string };
-}) => {
+export const getStaticProps = async ({ params: { slug } }: ISlug) => {
   const posts = getPostsByTagSlug(slug);
-
-  console.log(posts);
 
   return {
     props: { posts },
