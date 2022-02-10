@@ -1,6 +1,7 @@
 {
   "name": "blog",
   "private": true,
+  "license": "GPLv3",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
