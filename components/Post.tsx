@@ -4,7 +4,7 @@ import { replaceSpacesWithDashes } from '../lib/helpers';
 import { IPost } from '../types/Post';
 import Date from './Date';
 
-export default ({ post: { slug, title, date, tags } }: { post: IPost }) => {
+const Post = ({ post: { slug, title, date, tags } }: { post: IPost }) => {
   return (
     <div>
       <Link href={`/${slug}`}>
@@ -23,3 +23,5 @@ export default ({ post: { slug, title, date, tags } }: { post: IPost }) => {
     </div>
   );
 };
+
+export default Post;

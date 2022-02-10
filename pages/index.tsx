@@ -2,10 +2,9 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Post from '../components/Post';
 import { getSortedPostsData } from '../lib/posts';
-import { getPostsByTagSlug } from '../lib/tags';
 import { IPost } from '../types/Post';
 
-export default ({ allPosts }: { allPosts: IPost[] }) => {
+const Home = ({ allPosts }: { allPosts: IPost[] }) => {
   return (
     <div>
       <Head>
@@ -30,3 +29,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { allPosts },
   };
 };
+
+export default Home;

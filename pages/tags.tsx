@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getSortedTagList } from '../lib/tags';
 import { ITag } from '../types/Tag';
 
-export default ({ allTags }: { allTags: ITag[] }) => {
+const Tags = ({ allTags }: { allTags: ITag[] }) => {
   return (
     <div>
       {allTags.map((tag, index) => (
@@ -24,3 +24,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: { allTags },
   };
 };
+
+export default Tags;

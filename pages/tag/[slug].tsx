@@ -4,7 +4,7 @@ import { getAllTagSlugs, getPostsByTagSlug } from '../../lib/tags';
 import { IPost } from '../../types/Post';
 import { ISlug } from '../../types/Slug';
 
-export default ({ posts }: { posts: IPost[] }) => {
+const Tag = ({ posts }: { posts: IPost[] }) => {
   return (
     <div>
       {posts.map((post, index) => (
@@ -30,3 +30,5 @@ export const getStaticProps = async ({ params: { slug } }: ISlug) => {
     props: { posts },
   };
 };
+
+export default Tag;

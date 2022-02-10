@@ -7,7 +7,7 @@ import { getAllPostSlugs, getPostData } from '../lib/posts';
 import { IPostData } from '../types/PostData';
 import { ISlug } from '../types/Slug';
 
-export default ({
+const PostContent = ({
   postData: { title, date, tags, contentHtml },
 }: {
   postData: IPostData;
@@ -46,3 +46,5 @@ export const getStaticProps = async ({ params: { slug } }: ISlug) => {
     props: { postData },
   };
 };
+
+export default PostContent;
