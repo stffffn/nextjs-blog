@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { marked } from 'marked';
 import { IPost } from '../types/Post';
 import { IFrontmatter } from '../types/Frontmatter';
 import { IPostData } from '../types/PostData';
@@ -39,12 +38,11 @@ export const getAllPostSlugs = (): { params: { slug: string } }[] => {
 
 export const getPostData = (slug: string): IPostData => {
   const { data, content } = extractFrontmatterFromFile(`${slug}.md`);
-  const contentHtml = marked(content);
 
   return {
     slug,
     ...(data as IFrontmatter),
-    contentHtml,
+    content,
   };
 };
 
