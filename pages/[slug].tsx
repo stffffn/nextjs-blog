@@ -9,6 +9,7 @@ import { ISlug } from '../types/Slug';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import remarkGfm from 'remark-gfm';
 
 const PostContent = ({
   postData: { title, date, tags, content },
@@ -16,7 +17,7 @@ const PostContent = ({
   postData: IPostData;
 }) => {
   return (
-    <>
+    <article className="prose">
       <div>{title}</div>
       <Date dateString={date}></Date>
       <div>
@@ -29,7 +30,8 @@ const PostContent = ({
         ))}
       </div>
       <ReactMarkdown
-        className="prose"
+        remarkPlugins={[remarkGfm]}
+        linkTarget={'_blank'}
         components={{
           code({ inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '');
@@ -52,7 +54,7 @@ const PostContent = ({
       >
         {content}
       </ReactMarkdown>
-    </>
+    </article>
   );
 };
 
