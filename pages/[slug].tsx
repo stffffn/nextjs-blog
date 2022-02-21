@@ -1,53 +1,36 @@
 import { GetStaticPaths } from 'next';
-import Link from 'next/link';
 import React from 'react';
-import Date from '../components/Date';
-import { replaceSpacesWithDashes } from '../lib/helpers';
 import { getAllPostSlugs, getPostData } from '../lib/posts';
 import { IPostData } from '../types/PostData';
 import { ISlug } from '../types/Slug';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import remarkGfm from 'remark-gfm';
+import PostData from '../components/PostData';
+import styles from '../styles/markdown.module.scss';
 
 const PostContent = ({
-  postData: { title, date, tags, content },
+  postData: { title, date, tags, content, slug },
 }: {
   postData: IPostData;
 }) => {
   return (
-    <article className="prose">
-      <div>{title}</div>
-      <Date dateString={date}></Date>
-      <div>
-        {tags.map((tag, index) => (
-          <React.Fragment key={index}>
-            <Link href={`/tag/${replaceSpacesWithDashes(tag)}`}>
-              <a>#{tag}</a>
-            </Link>{' '}
-          </React.Fragment>
-        ))}
+    <article>
+      <div className="mb-4">
+        <PostData
+          post={{ title, date, tags, slug }}
+          headlineClickable={false}
+        />
       </div>
       <ReactMarkdown
+        className={styles.markdown}
         remarkPlugins={[remarkGfm]}
         linkTarget={'_blank'}
         components={{
-          code({ inline, className, children, ...props }) {
-            const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
-              <SyntaxHighlighter
-                style={dracula}
-                language={match[1]}
-                PreTag="div"
-                {...props}
-              >
-                {String(children).replace(/\n$/, '')}
-              </SyntaxHighlighter>
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
+          img({ src, alt }) {
+            return (
+              <a href={src} target="_blank" rel="noreferrer">
+                <img src={src} alt={alt} />
+              </a>
             );
           },
         }}

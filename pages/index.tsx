@@ -1,24 +1,25 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Post from '../components/Post';
+import React from 'react';
+import PostData from '../components/PostData';
 import { getSortedPostsData } from '../lib/posts';
 import { IPost } from '../types/Post';
 
 const Home = ({ allPosts }: { allPosts: IPost[] }) => {
   return (
-    <div>
+    <>
       <Head>
         <title>Blog | Steffen Weitz</title>
         <meta name="description" content="Blog of Steffen Weitz" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        {allPosts.map((post, index) => (
-          <Post key={index} post={post}></Post>
-        ))}
-      </div>
-    </div>
+      {allPosts.map((post) => (
+        <section key={post.title} className="mb-6">
+          <PostData post={post}></PostData>
+        </section>
+      ))}
+    </>
   );
 };
 

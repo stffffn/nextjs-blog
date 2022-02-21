@@ -8,6 +8,7 @@ import {
   replaceDashesWithSpaces,
   replaceSpacesWithDashes,
   sortArrayAscending,
+  sortArrayDescending,
 } from './helpers';
 
 const postsDir = path.join('posts');
@@ -24,12 +25,9 @@ export const getSortedTagList = (): ITag[] => {
     frontmatter.tags.forEach((tagName) => {
       const tagIndex = allTags.findIndex((tag) => tag.name === tagName);
 
-      if (tagIndex !== -1) {
-        allTags[tagIndex].count++;
-      } else {
+      if (tagIndex === -1) {
         allTags.push({
           name: tagName,
-          count: 1,
           slug: replaceSpacesWithDashes(tagName),
         });
       }
@@ -73,7 +71,7 @@ export const getPostsByTagSlug = (slug: string): IPost[] => {
     }
   });
 
-  return posts;
+  return sortArrayDescending(posts, 'date');
 };
 
 const extractFrontmatterFromFile = (fileName: string) => {

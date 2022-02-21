@@ -1,19 +1,15 @@
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
+import TagBubble from '../components/TagBubble';
 import { getSortedTagList } from '../lib/tags';
 import { ITag } from '../types/Tag';
 
 const Tags = ({ allTags }: { allTags: ITag[] }) => {
   return (
-    <div>
-      {allTags.map((tag, index) => (
-        <div key={index}>
-          <Link href={`/tag/${tag.slug}`}>
-            <a>{`${tag.name} (${tag.count})`}</a>
-          </Link>
-        </div>
+    <>
+      {allTags.map((tag) => (
+        <TagBubble key={tag.name} name={tag.name} />
       ))}
-    </div>
+    </>
   );
 };
 
