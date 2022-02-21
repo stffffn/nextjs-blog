@@ -11,7 +11,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Blog / Steffen Weitz</title>
         <meta name="description" content="Blog of Steffen Weitz" />
         <meta name="author" content="Steffen Weitz" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <ThemeProvider attribute="class">
