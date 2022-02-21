@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PostData from '../components/PostData';
 import styles from '../styles/markdown.module.scss';
+import Head from 'next/head';
 
 const PostContent = ({
   postData: { title, date, tags, content, slug },
@@ -14,30 +15,36 @@ const PostContent = ({
   postData: IPostData;
 }) => {
   return (
-    <article>
-      <div className="mb-4">
-        <PostData
-          post={{ title, date, tags, slug }}
-          headlineClickable={false}
-        />
-      </div>
-      <ReactMarkdown
-        className={styles.markdown}
-        remarkPlugins={[remarkGfm]}
-        linkTarget={'_blank'}
-        components={{
-          img({ src, alt }) {
-            return (
-              <a href={src} target="_blank" rel="noreferrer">
-                <img src={src} alt={alt} />
-              </a>
-            );
-          },
-        }}
-      >
-        {content}
-      </ReactMarkdown>
-    </article>
+    <>
+      <Head>
+        <title>{title} / Blog / Steffen Weitz</title>
+      </Head>
+
+      <article>
+        <div className="mb-4">
+          <PostData
+            post={{ title, date, tags, slug }}
+            headlineClickable={false}
+          />
+        </div>
+        <ReactMarkdown
+          className={styles.markdown}
+          remarkPlugins={[remarkGfm]}
+          linkTarget={'_blank'}
+          components={{
+            img({ src, alt }) {
+              return (
+                <a href={src} target="_blank" rel="noreferrer">
+                  <img src={src} alt={alt} />
+                </a>
+              );
+            },
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      </article>
+    </>
   );
 };
 
