@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm';
 import PostData from '../components/PostData';
 import styles from '../styles/markdown.module.scss';
 import Head from 'next/head';
+import { prefix } from '../lib/prefix';
 
 const PostContent = ({
   postData: { title, date, tags, content, slug },
@@ -35,7 +36,7 @@ const PostContent = ({
             img({ src, alt }) {
               return (
                 <a href={src} target="_blank" rel="noreferrer">
-                  <img src={src} alt={alt} />
+                  <img src={prefix + src} alt={alt} />
                 </a>
               );
             },
