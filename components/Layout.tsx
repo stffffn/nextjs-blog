@@ -4,7 +4,7 @@ import Header from './Header';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex flex-col min-h-screen mx-auto md:max-w-3xl p-4">
+    <div className="flex flex-col mx-auto p-4 min-h-screen md:max-w-3xl">
       <Header />
       <main className="flex-1 my-8">{children}</main>
       <Footer />
