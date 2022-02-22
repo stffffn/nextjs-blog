@@ -23,7 +23,7 @@ const ThemeSwitch = () => {
       onClick={() =>
         setTheme(theme === 'dark' || theme === 'system' ? 'light' : 'dark')
       }
-      className="inline-block mr-2.5 last:mr-0 only-of-type:mr-0 hover:text-blue-600 dark:hover:text-blue-500 transition-colors ease-in-out"
+      className="inline-block mr-2.5 last:mr-0 only-of-type:mr-0 hv:hover:text-blue-600 dark:hv:hover:text-blue-500 transition-colors ease-in-out"
     >
       {theme === 'dark' || theme === 'system' ? <FaSun /> : <FaMoon />}
     </button>

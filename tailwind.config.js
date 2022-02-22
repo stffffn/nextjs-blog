@@ -5,7 +5,11 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        hv: { raw: '(hover: hover)' },
+      },
+    },
   },
   plugins: [],
 };

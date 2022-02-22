@@ -17,7 +17,7 @@ const Footer = () => {
       <Link href={'https://creativecommons.org/licenses/by-nc/4.0/'}>
         <a
           target="_blank"
-          className="flex items-center ml-auto text-lg hover:text-blue-600 dark:hover:text-blue-500 transition-colors ease-in-out"
+          className="flex items-center ml-auto text-lg hv:hover:text-blue-600 dark:hv:hover:text-blue-500 transition-colors ease-in-out"
         >
           <FaCreativeCommons className="mr-1" />
           <FaCreativeCommonsBy className="mr-1" />

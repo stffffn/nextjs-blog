@@ -65,7 +65,7 @@
   }
 
   & a {
-    @apply text-blue-600 hover:text-black transition-colors ease-in-out;
+    @apply text-blue-600 hv:hover:text-black transition-colors ease-in-out;
   }
 
   & blockquote {
@@ -87,7 +87,7 @@
   }
 
   & a {
-    @apply text-blue-500 hover:text-white transition-colors ease-in-out;
+    @apply text-blue-500 hv:hover:text-white transition-colors ease-in-out;
   }
 
   & blockquote {
