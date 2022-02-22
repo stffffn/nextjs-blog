@@ -24,7 +24,7 @@ const PostData = ({
         )}
       </h1>
       <Date dateString={date} />
-      <div>
+      <div className="flex flex-wrap">
         {tags.map((tag) => (
           <Tag key={tag} tag={tag} />
         ))}

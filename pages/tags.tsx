@@ -11,9 +11,11 @@ const Tags = ({ allTags }: { allTags: ITag[] }) => {
         <title>Tags / Blog / Steffen Weitz</title>
       </Head>
 
-      {allTags.map((tag) => (
-        <TagBubble key={tag.name} name={tag.name} />
-      ))}
+      <div className="flex flex-wrap">
+        {allTags.map((tag) => (
+          <TagBubble key={tag.name} name={tag.name} />
+        ))}
+      </div>
     </>
   );
 };

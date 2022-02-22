@@ -4,7 +4,7 @@ import { replaceSpacesWithDashes } from '../lib/helpers';
 const Tag = ({ tag }: { tag: string }) => {
   return (
     <Link key={tag} href={`/tag/${replaceSpacesWithDashes(tag)}`}>
-      <a className="text-sm text-zinc-500 hv:hover:text-blue-600 mr-2 dark:text-zinc-400 dark:hv:hover:text-blue-500 transition-colors ease-in-out">
+      <a className="overflow-hidden text-ellipsis text-sm text-zinc-500 hv:hover:text-blue-600 mr-2 dark:text-zinc-400 dark:hv:hover:text-blue-500 transition-colors ease-in-out">
         #{tag}
       </a>
     </Link>
