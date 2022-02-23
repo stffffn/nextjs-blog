@@ -11,13 +11,15 @@ const Footer = () => {
   const currYear = getYear(currDate);
 
   return (
-    <footer className="flex items-center text-zinc-300 dark:text-zinc-600">
+    <footer className="flex items-center text-zinc-500 dark:text-zinc-400">
       <span className="pr-2 text-sm">© {currYear} Steffen Weitz</span>
 
       <Link href={'https://creativecommons.org/licenses/by-nc/4.0/'}>
         <a
           target="_blank"
           className="flex items-center ml-auto text-lg hv:hover:text-blue-600 dark:hv:hover:text-blue-500"
+          rel="noopener noreferrer"
+          aria-label="Creative Commens CC BY-NC 4.0"
         >
           <FaCreativeCommons className="mr-1" />
           <FaCreativeCommonsBy className="mr-1" />
