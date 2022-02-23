@@ -8,7 +8,7 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <FaMoon />;
+    return <div className="w-[1.125rem] h-[1.125rem]"></div>;
   }
 
   return (
