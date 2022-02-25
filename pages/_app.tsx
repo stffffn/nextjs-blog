@@ -15,7 +15,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel="icon" href={`${prefix}/favicon.png`} />
       </Head>
 
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" disableTransitionOnChange>
         <Layout>
           <Component {...pageProps} />
         </Layout>

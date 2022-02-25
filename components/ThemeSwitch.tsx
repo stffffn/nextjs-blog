@@ -14,7 +14,7 @@ const ThemeSwitch = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="inline-block hv:hover:text-blue-600 dark:hv:hover:text-blue-500"
+      className="inline-block hv:hover:text-blue-600 dark:hv:hover:text-blue-500 transition-colors ease-in-out duration-200"
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       {theme === 'dark' ? <FaSun /> : <FaMoon />}

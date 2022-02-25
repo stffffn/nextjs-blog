@@ -15,7 +15,7 @@ const PostData = ({
       <h1 className="text-2xl font-medium">
         {headlineClickable ? (
           <Link href={`/${slug}`}>
-            <a className="hv:hover:text-blue-600 dark:hv:hover:text-blue-500">
+            <a className="hv:hover:text-blue-600 dark:hv:hover:text-blue-500 transition-colors ease-in-out duration-200">
               {title}
             </a>
           </Link>
