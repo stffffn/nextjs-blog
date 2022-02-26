@@ -2,6 +2,7 @@
 title: 'First Post'
 date: '2022-02-21'
 tags: ['blog', 'development', 'meta']
+description: 'The very first post in my new blog.'
 ---
 
 New blog and therefore the obligatory "first post" post.

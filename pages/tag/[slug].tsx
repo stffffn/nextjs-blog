@@ -1,5 +1,5 @@
 import { GetStaticPaths } from 'next';
-import Head from 'next/head';
+import Head from '../../components/Head';
 import PostData from '../../components/PostData';
 import TagBubble from '../../components/TagBubble';
 import { replaceDashesWithSpaces } from '../../lib/helpers';
@@ -21,11 +21,15 @@ const PostsByTag = ({
   slug: string;
   allTags: ITag[];
 }) => {
+  const tagName = replaceDashesWithSpaces(slug);
+
   return (
     <>
-      <Head>
-        <title>#{replaceDashesWithSpaces(slug)} / Blog / Steffen Weitz</title>
-      </Head>
+      <Head
+        title={`#${tagName} / Blog / Steffen Weitz`}
+        description={`All posts tagged with #${tagName}.`}
+        urlPath={`/tag/${slug}`}
+      />
 
       {allTags.map((tag) => (
         <TagBubble active={tag.slug === slug} key={tag.name} name={tag.name} />

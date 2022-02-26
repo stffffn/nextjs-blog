@@ -7,19 +7,21 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PostData from '../components/PostData';
 import styles from '../styles/markdown.module.scss';
-import Head from 'next/head';
-import { prefix } from '../lib/prefix';
+import Head from '../components/Head';
 
 const PostContent = ({
-  postData: { title, date, tags, content, slug },
+  postData: { title, date, tags, content, slug, description, image },
 }: {
   postData: IPostData;
 }) => {
   return (
     <>
-      <Head>
-        <title>{title} / Blog / Steffen Weitz</title>
-      </Head>
+      <Head
+        title={`${title} / Blog / Steffen Weitz/`}
+        description={description}
+        urlPath={`/${slug}`}
+        image={image}
+      />
 
       <article>
         <div className="mb-4">
@@ -36,7 +38,7 @@ const PostContent = ({
             img({ src, alt }) {
               return (
                 <a href={src} target="_blank" rel="noreferrer">
-                  <img src={prefix + src} alt={alt} />
+                  <img src={src} alt={alt} />
                 </a>
               );
             },
