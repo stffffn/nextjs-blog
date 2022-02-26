@@ -17,7 +17,7 @@ const PostContent = ({
   return (
     <>
       <Head
-        title={`${title} / Blog / Steffen Weitz/`}
+        title={`${title} / Blog / Steffen Weitz`}
         description={description}
         urlPath={`/${slug}`}
         image={image}
