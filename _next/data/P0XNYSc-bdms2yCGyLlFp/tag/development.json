@@ -1,0 +1,1 @@
+{"pageProps":{"posts":[{"slug":"first-post","title":"First Post","date":"2022-02-21","tags":["blog","development","meta"],"description":"The very first post in my new blog."}],"slug":"development","allTags":[{"name":"blog","slug":"blog"},{"name":"development","slug":"development"},{"name":"meta","slug":"meta"}]},"__N_SSG":true}
