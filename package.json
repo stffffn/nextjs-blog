@@ -2,6 +2,9 @@
   "name": "blog",
   "private": true,
   "license": "GPLv3",
+  "browser": {
+    "fs": false
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

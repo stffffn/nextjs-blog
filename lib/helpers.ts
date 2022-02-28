@@ -1,3 +1,7 @@
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
 export const replaceSpacesWithDashes = (str: string) => {
   return str.replace(/\s+/g, '-');
 };
@@ -38,4 +42,13 @@ export const sortArrayDescending = (arr: any[], key?: string) => {
       return 0;
     }
   });
+};
+
+export const extractFrontmatterFromFile = (
+  fileName: string,
+  postsDir: string
+) => {
+  const filePath = path.join(postsDir, fileName);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  return matter(fileContent);
 };

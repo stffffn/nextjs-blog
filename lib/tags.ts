@@ -1,10 +1,10 @@
 import fs from 'fs';
-import matter from 'gray-matter';
 import path from 'path';
 import { IFrontmatter } from '../types/Frontmatter';
 import { IPost } from '../types/Post';
 import { ITag } from '../types/Tag';
 import {
+  extractFrontmatterFromFile,
   replaceDashesWithSpaces,
   replaceSpacesWithDashes,
   sortArrayAscending,
@@ -19,7 +19,7 @@ export const getSortedTagList = (): ITag[] => {
   const fileNames = fs.readdirSync(postsDir);
 
   fileNames.map((fileName) => {
-    const frontmatter = extractFrontmatterFromFile(fileName)
+    const frontmatter = extractFrontmatterFromFile(fileName, postsDir)
       .data as IFrontmatter;
 
     frontmatter.tags.forEach((tagName) => {
@@ -42,7 +42,7 @@ export const getAllTagSlugs = (): { params: { slug: string } }[] => {
   const slugs: { params: { slug: string } }[] = [];
 
   fileNames.forEach((fileName) => {
-    const frontmatter = extractFrontmatterFromFile(fileName)
+    const frontmatter = extractFrontmatterFromFile(fileName, postsDir)
       .data as IFrontmatter;
 
     frontmatter.tags.forEach((tagName) => {
@@ -63,7 +63,7 @@ export const getPostsByTagSlug = (slug: string): IPost[] => {
 
   fileNames.forEach((fileName) => {
     const postSlug = fileName.replace('.md', '');
-    const frontmatter = extractFrontmatterFromFile(fileName)
+    const frontmatter = extractFrontmatterFromFile(fileName, postsDir)
       .data as IFrontmatter;
 
     if (frontmatter.tags.find((tag) => tag === tagName)) {
@@ -72,10 +72,4 @@ export const getPostsByTagSlug = (slug: string): IPost[] => {
   });
 
   return sortArrayDescending(posts, 'date');
-};
-
-const extractFrontmatterFromFile = (fileName: string) => {
-  const filePath = path.join(postsDir, fileName);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-  return matter(fileContent);
 };
