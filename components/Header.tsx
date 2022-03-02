@@ -1,10 +1,4 @@
-import {
-  FaGithub,
-  FaHashtag,
-  FaInstagram,
-  FaRegEnvelope,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaGithub, FaHashtag, FaInstagram, FaTwitter } from 'react-icons/fa';
 import HeaderItem from './HeaderItem';
 import ThemeSwitch from './ThemeSwitch';
 
@@ -39,9 +33,6 @@ const Header = () => {
           external={true}
         >
           <FaTwitter />
-        </HeaderItem>
-        <HeaderItem href="mailto:hallo@steffenweitz.de" label="Email Contact">
-          <FaRegEnvelope />
         </HeaderItem>
         <ThemeSwitch />
       </nav>
