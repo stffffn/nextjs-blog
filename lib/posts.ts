@@ -40,7 +40,11 @@ export const getAllPostSlugs = (): { params: { slug: string } }[] => {
 };
 
 export const getPostData = (slug: string): IPostData => {
-  const { data, content } = extractFrontmatterFromFile(`${slug}.md`, postsDir);
+  const matter = extractFrontmatterFromFile(`${slug}.md`, postsDir);
+  const content = matter.content;
+  let data = matter.data;
+
+  data = { ...data, tags: sortArrayAscending(data.tags) };
 
   return {
     slug,
