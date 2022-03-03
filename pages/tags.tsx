@@ -7,7 +7,7 @@ import { ITag } from '../types/Tag';
 const Tags = ({ allTags }: { allTags: ITag[] }) => {
   return (
     <>
-      <Head title="Tags / Blog / Steffen Weitz" urlPath="/tags" />
+      <Head title="Tags / Bla Bli Blog" urlPath="/tags" />
 
       <div className="flex flex-wrap">
         {allTags.map((tag) => (

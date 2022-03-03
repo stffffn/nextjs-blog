@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="flex items-center">
       <HeaderItem href="/" label="Home">
-        S–W
+        Bla Bli Blog
       </HeaderItem>
 
       <nav className="flex items-center ml-auto text-lg">

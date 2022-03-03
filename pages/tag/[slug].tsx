@@ -26,14 +26,20 @@ const PostsByTag = ({
   return (
     <>
       <Head
-        title={`#${tagName} / Blog / Steffen Weitz`}
+        title={`#${tagName} / Bla Bli Blog`}
         description={`All posts tagged with #${tagName}.`}
         urlPath={`/tag/${slug}`}
       />
 
-      {allTags.map((tag) => (
-        <TagBubble active={tag.slug === slug} key={tag.name} name={tag.name} />
-      ))}
+      <div className="flex flex-wrap">
+        {allTags.map((tag) => (
+          <TagBubble
+            active={tag.slug === slug}
+            key={tag.name}
+            name={tag.name}
+          />
+        ))}
+      </div>
 
       {posts.map((post) => (
         <article key={post.title} className="mt-6">

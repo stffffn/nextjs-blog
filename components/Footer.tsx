@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
     <footer className="flex items-center text-zinc-500 dark:text-zinc-400">
-      <span className="pr-2 text-sm">© {currYear} Steffen Weitz</span>
+      <span className="pr-2 text-sm">© {currYear} stffffn</span>
 
       <Link href={'https://creativecommons.org/licenses/by-nc/4.0/'}>
         <a

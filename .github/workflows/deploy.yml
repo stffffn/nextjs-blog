@@ -24,7 +24,7 @@ jobs:
       - name: Add .nojekyll
         run: touch ./out/.nojekyll
       - name: Add CNAME
-        run: echo www.steffenweitz.com >> ./out/CNAME
+        run: echo blabli.blog >> ./out/CNAME
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:

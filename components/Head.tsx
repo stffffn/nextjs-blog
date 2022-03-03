@@ -1,8 +1,8 @@
 import NextHead from 'next/head';
 
-const defaultTitle = 'Blog / Steffen Weitz';
-const defaultDescription = 'The personal blog of Steffen Weitz.';
-const baseUrl = 'https://www.steffenweitz.com';
+const defaultTitle = 'Bla Bli Blog';
+const defaultDescription = 'The personal blog of stffffn';
+const baseUrl = 'https://blabli.blog';
 const defaultImage = '/og-image.png';
 
 const Head = ({
@@ -27,7 +27,7 @@ const Head = ({
       <meta name="twitter:title" content={title} />
 
       {/* Author */}
-      <meta name="author" content="Steffen Weitz" />
+      <meta name="author" content="stffffn" />
 
       {/* Description */}
       <meta name="description" content={description} />
