@@ -9,10 +9,8 @@ import PostData from '../components/PostData';
 import styles from '../styles/markdown.module.scss';
 import Head from '../components/Head';
 
-const PostContent = ({
+const PostContent: React.VFC<{ postData: IPostData }> = ({
   postData: { title, date, tags, content, slug, description, image },
-}: {
-  postData: IPostData;
 }) => {
   return (
     <>

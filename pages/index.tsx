@@ -4,7 +4,7 @@ import PostData from '../components/PostData';
 import { getSortedPostsData } from '../lib/posts';
 import { IPost } from '../types/Post';
 
-const Home = ({ allPosts }: { allPosts: IPost[] }) => {
+const Home: React.VFC<{ allPosts: IPost[] }> = ({ allPosts }) => {
   return (
     <>
       {allPosts.map((post) => (

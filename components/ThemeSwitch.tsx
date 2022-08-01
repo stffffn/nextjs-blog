@@ -1,8 +1,8 @@
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
-const ThemeSwitch = () => {
+const ThemeSwitch: React.VFC = () => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme: theme, setTheme } = useTheme();
   useEffect(() => setMounted(true), []);

@@ -1,17 +1,12 @@
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-const HeaderItem = ({
-  href,
-  label,
-  children,
-  external,
-}: {
+const HeaderItem: React.VFC<{
   href: string;
   label: string;
   children: ReactNode;
   external?: boolean;
-}) => {
+}> = ({ href, label, children, external }) => {
   return (
     <Link href={href}>
       <a

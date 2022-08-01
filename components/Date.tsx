@@ -1,6 +1,7 @@
 import { parseISO, format } from 'date-fns';
+import React from 'react';
 
-const Date = ({ dateString }: { dateString: string }) => {
+const Date: React.VFC<{ dateString: string }> = ({ dateString }) => {
   const date = parseISO(dateString);
   return (
     <time

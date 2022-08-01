@@ -1,12 +1,13 @@
 import { getYear } from 'date-fns';
 import Link from 'next/link';
+import React from 'react';
 import {
   FaCreativeCommons,
   FaCreativeCommonsBy,
   FaCreativeCommonsNc,
 } from 'react-icons/fa';
 
-const Footer = () => {
+const Footer: React.VFC = () => {
   const currDate = new Date();
   const currYear = getYear(currDate);
 

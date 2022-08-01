@@ -1,7 +1,11 @@
 import Link from 'next/link';
+import React from 'react';
 import { replaceSpacesWithDashes } from '../lib/helpers';
 
-const TagBubble = ({ name, active }: { name: string; active?: boolean }) => {
+const TagBubble: React.VFC<{ name: string; active?: boolean }> = ({
+  name,
+  active,
+}) => {
   return (
     <Link href={`/tag/${replaceSpacesWithDashes(name)}`}>
       <a

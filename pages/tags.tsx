@@ -1,10 +1,11 @@
 import { GetStaticProps } from 'next';
+import React from 'react';
 import Head from '../components/Head';
 import TagBubble from '../components/TagBubble';
 import { getSortedTagList } from '../lib/tags';
 import { ITag } from '../types/Tag';
 
-const Tags = ({ allTags }: { allTags: ITag[] }) => {
+const Tags: React.VFC<{ allTags: ITag[] }> = ({ allTags }) => {
   return (
     <>
       <Head title="Tags / Bla Bli Blog" urlPath="/tags" />

@@ -1,4 +1,5 @@
 import { GetStaticPaths } from 'next';
+import React from 'react';
 import Head from '../../components/Head';
 import PostData from '../../components/PostData';
 import TagBubble from '../../components/TagBubble';
@@ -12,15 +13,11 @@ import { IPost } from '../../types/Post';
 import { ISlug } from '../../types/Slug';
 import { ITag } from '../../types/Tag';
 
-const PostsByTag = ({
-  posts,
-  slug,
-  allTags,
-}: {
+const PostsByTag: React.VFC<{
   posts: IPost[];
   slug: string;
   allTags: ITag[];
-}) => {
+}> = ({ posts, slug, allTags }) => {
   const tagName = replaceDashesWithSpaces(slug);
 
   return (

@@ -1,8 +1,9 @@
+import React from 'react';
 import { FaGithub, FaHashtag, FaInstagram, FaTwitter } from 'react-icons/fa';
 import HeaderItem from './HeaderItem';
 import ThemeSwitch from './ThemeSwitch';
 
-const Header = () => {
+const Header: React.VFC = () => {
   return (
     <header className="flex items-center">
       <HeaderItem href="/" label="Home">

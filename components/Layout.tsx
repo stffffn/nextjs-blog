@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout: React.VFC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col mx-auto p-4 min-h-screen md:max-w-3xl">
       <Header />

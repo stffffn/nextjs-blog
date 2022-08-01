@@ -1,16 +1,16 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import matter, { GrayMatterFile } from 'gray-matter';
 
-export const replaceSpacesWithDashes = (str: string) => {
+export const replaceSpacesWithDashes = (str: string): string => {
   return str.replace(/\s+/g, '-');
 };
 
-export const replaceDashesWithSpaces = (str: string) => {
+export const replaceDashesWithSpaces = (str: string): string => {
   return str.replace(/-/g, ' ');
 };
 
-export const sortArrayAscending = (arr: any[], key?: string) => {
+export const sortArrayAscending = (arr: any[], key?: string): any[] => {
   return arr.sort((a, b) => {
     if (key) {
       a = a[key];
@@ -27,7 +27,7 @@ export const sortArrayAscending = (arr: any[], key?: string) => {
   });
 };
 
-export const sortArrayDescending = (arr: any[], key?: string) => {
+export const sortArrayDescending = (arr: any[], key?: string): any[] => {
   return arr.sort((a, b) => {
     if (key) {
       a = a[key];
@@ -47,7 +47,7 @@ export const sortArrayDescending = (arr: any[], key?: string) => {
 export const extractFrontmatterFromFile = (
   fileName: string,
   postsDir: string
-) => {
+): GrayMatterFile<string> => {
   const filePath = path.join(postsDir, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf8');
   return matter(fileContent);

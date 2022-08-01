@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
 
-const Document = () => {
+const Document: React.VFC = () => {
   return (
     <Html lang="en-US">
       <Head />

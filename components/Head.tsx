@@ -1,20 +1,21 @@
 import NextHead from 'next/head';
+import React from 'react';
 
 const defaultTitle = 'Bla Bli Blog';
 const defaultDescription = 'The personal blog of stffffn';
 const baseUrl = 'https://blabli.blog';
 const defaultImage = '/og-image.png';
 
-const Head = ({
-  title = defaultTitle,
-  description = defaultDescription,
-  image = defaultImage,
-  urlPath,
-}: {
+const Head: React.VFC<{
   title?: string;
   description?: string;
   image?: string;
   urlPath: string;
+}> = ({
+  title = defaultTitle,
+  description = defaultDescription,
+  image = defaultImage,
+  urlPath,
 }) => {
   const url = baseUrl + urlPath;
   const imageUrl = baseUrl + image;
