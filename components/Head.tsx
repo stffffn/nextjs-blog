@@ -1,9 +1,10 @@
 import NextHead from 'next/head';
 import React from 'react';
+import { prefix } from '../lib/prefix';
 
 const defaultTitle = 'Bla Bli Blog';
 const defaultDescription = 'The personal blog of stffffn';
-const baseUrl = 'https://blabli.blog';
+const baseUrl = prefix;
 const defaultImage = '/og-image.png';
 
 const Head: React.VFC<{
@@ -48,7 +49,7 @@ const Head: React.VFC<{
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta httpEquiv="Content-Language" content="en-US" />
       <meta name="og:type" content="website" />
-      <link rel="manifest" href="/favicons/manifest.json" />
+      <link rel="manifest" href="favicons/manifest.json" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -60,19 +61,19 @@ const Head: React.VFC<{
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicons/favicon-32.png"
+        href="favicons/favicon-32.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="128x128"
-        href="/favicons/favicon-128.png"
+        href="favicons/favicon-128.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="192x192"
-        href="/favicons/favicon-192.png"
+        href="favicons/favicon-192.png"
       />
 
       {/* iOS favicons */}
@@ -80,19 +81,19 @@ const Head: React.VFC<{
         rel="apple-touch-icon"
         type="image/png"
         sizes="152x152"
-        href="/favicons/favicon-152.png"
+        href="favicons/favicon-152.png"
       />
       <link
         rel="apple-touch-icon"
         type="image/png"
         sizes="167x167"
-        href="/favicons/favicon-167.png"
+        href="favicons/favicon-167.png"
       />
       <link
         rel="apple-touch-icon"
         type="image/png"
         sizes="180x180"
-        href="/favicons/favicon-180.png"
+        href="favicons/favicon-180.png"
       />
 
       {/* Android favicons */}
@@ -100,8 +101,8 @@ const Head: React.VFC<{
         rel="shortcut icon"
         type="image/png"
         sizes="196x196"
-        href="/favicons/favicon-196.png"
-      ></link>
+        href="favicons/favicon-196.png"
+      />
     </NextHead>
   );
 };

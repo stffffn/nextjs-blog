@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm';
 import PostData from '../components/PostData';
 import styles from '../styles/markdown.module.scss';
 import Head from '../components/Head';
+import { prefix } from '../lib/prefix';
 
 const PostContent: React.VFC<{ postData: IPostData }> = ({
   postData: { title, date, tags, content, slug, description, image },
@@ -35,8 +36,8 @@ const PostContent: React.VFC<{ postData: IPostData }> = ({
           components={{
             img({ src, alt }) {
               return (
-                <a href={src} target="_blank" rel="noreferrer">
-                  <img src={src} alt={alt} />
+                <a href={prefix + src} target="_blank" rel="noreferrer">
+                  <img src={prefix + src} alt={alt} />
                 </a>
               );
             },
